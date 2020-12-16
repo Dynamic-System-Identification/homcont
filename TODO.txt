@@ -1,0 +1,19 @@
+homcont
+-------
+
+Sourcery complains functions are too complex.
+Consider making functions more modular.
+This mainly concerns the following functions:
+
+helpers.py: corrector()
+helpers.py: how_to_proceed()
+main.py: homsolve()
+
+
+
+docs
+----
+
+Produce detailed reference manual.
+
+examples.py: Produce more (better) examples.
