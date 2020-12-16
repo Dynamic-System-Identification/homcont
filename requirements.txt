@@ -1,6 +1,5 @@
 python==3.8
 numpy
 matplotlib
-
 scipy
 numdifftools
