@@ -1,0 +1,8 @@
+python==3.8
+spyder-kernels==1.9.4
+numpy
+matplotlib
+scipy
+numdifftools
+pytest
+flake8
