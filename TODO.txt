@@ -24,3 +24,5 @@ docs
 Produce detailed reference manual.
 
 examples.py: Produce more (better) examples.
+
+README.md: Add more info.
