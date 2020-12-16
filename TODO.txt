@@ -11,6 +11,13 @@ main.py: homsolve()
 
 
 
+tests
+-----
+
+Create test_*.py files for pytest.
+
+
+
 docs
 ----
 
