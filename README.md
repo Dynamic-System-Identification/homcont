@@ -1,2 +1,2 @@
-# homcont
-Python software to solve systems of (nonlinear) equations via homotopy continuation.
+# HomCont
+Solving systems of nonlinear equations by homotopy continuation.
