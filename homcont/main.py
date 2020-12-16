@@ -244,7 +244,9 @@ def homsolve(H: callable, y0: np.ndarray, J: callable = None,
         if hompath is not None:
             hompath.update(t=t, x=y_corr[:-1], sign=sign, cond=cond)
         if verbose and success_corr and success_step:
-            sys.stdout.write(f'\rStep {num_steps}:   t = {t: 0.4f},   s = {s: 0.2f},   ds = {ds: 0.2f},   cond(J) = {cond: 0.0f}            ')
+            sys.stdout.write(f'\rStep {num_steps}:   t = {t: 0.4f},   '
+                             + f's = {s: 0.2f},   ds = {ds: 0.2f},   '
+                             + f'cond(J) = {cond: 0.0f}            ')
             sys.stdout.flush()
 
         # check number of steps
@@ -252,7 +254,8 @@ def homsolve(H: callable, y0: np.ndarray, J: callable = None,
             continue_tracing = False
             success_step = False
             if verbose:
-                sys.stdout.write(f'\nMaximum number {max_steps} of steps reached.')
+                sys.stdout.write(f'\nMaximum number {max_steps} '
+                                 + 'of steps reached.')
                 sys.stdout.flush()
 
     # end of path tracing loop
@@ -262,7 +265,8 @@ def homsolve(H: callable, y0: np.ndarray, J: callable = None,
         H_test = np.max(np.abs(H(y_corr)))
         x_test = np.max(np.abs(trans_x-trans_x_old)) / ds
         elapsed = datetime.timedelta(seconds=round(time.perf_counter()-tic))
-        print(f'\nFinal Result:   max|dx|/ds = {x_test:0.1E},   max|H| = {H_test:0.1E}')
+        print(f'\nFinal Result:   max|dx|/ds = {x_test:0.1E},   '
+              + f'max|H| = {H_test:0.1E}')
         print(f'Time elapsed = {elapsed}')
         print('End homotopy continuation')
         print('=' * 50)

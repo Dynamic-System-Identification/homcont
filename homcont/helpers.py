@@ -23,8 +23,8 @@ def input_check(y0, H, J, x_transformer):
 
     # check y0
     if len(y0.shape) != 1:
-        raise ValueError(f'"y0" must be a flat 1D array, \
-                         but has shape {y0.shape}.')
+        raise ValueError('"y0" must be a flat 1D array, '
+                         + f'but has shape {y0.shape}.')
 
     # check H(y0)
     try:
@@ -34,11 +34,11 @@ def input_check(y0, H, J, x_transformer):
     if np.isnan(H0).any():
         raise ValueError('"H0(y0)" produces NaN.')
     if len(H0.shape) != 1:
-        raise ValueError(f'"H(y0)" should be a 1D vector, \
-                         but has shape {H0.shape}.')
+        raise ValueError('"H(y0)" should be a 1D vector, '
+                         + f'but has shape {H0.shape}.')
     if len(H0) != len(y0)-1:
-        raise ValueError(f'"H(y0)" should have length {len(y0)-1}, \
-                         but has length {len(H0)}.')
+        raise ValueError(f'"H(y0)" should have length {len(y0)-1}, '
+                         + f'but has length {len(H0)}.')
 
     # check J(y0)
     try:
@@ -130,9 +130,11 @@ def transversality_check(tangent, parameters):
 
     scalar_product = min([1, max([-1, np.dot(tangent, dummy_tangent)])])
     angle = np.arccos(scalar_product) * 180 / np.pi
-    
+
     if angle > parameters['transvers_angle_max']:
-        raise ValueError(f'\nTangent has angle {angle: 0.2f}° relative to straight line in t-direction. Starting point is not transversal to x-plane.')
+        raise ValueError(f'\nTangent has angle {angle: 0.2f}° relative to '
+                         + 'straight line in t-direction. Starting point is '
+                         + 'not transversal to x-plane.')
 
     return
 
@@ -165,7 +167,8 @@ def swap_sign_bifurcation(sign, parameters, tangent_new, tangent_old,
 
     if angle > parameters['bifurc_angle_min']:
         if verbose:
-            sys.stdout.write(f'\nBifurcation point encountered at angle {angle: 0.2f}°. Direction swapped.\n')
+            sys.stdout.write('\nBifurcation point encountered at angle '
+                             + f'{angle: 0.2f}°. Direction swapped.\n')
             sys.stdout.flush()
         return True
     return False
