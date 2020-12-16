@@ -2,11 +2,6 @@
 __pycache__/
 *.py[cod]
 *$py.class
-.spyproject/
-.tex/
-.vscode/
-homcont/__pycache__/
-*.pyc
 
 # C extensions
 *.so
@@ -132,3 +127,10 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# custom stuff
+.spyproject/
+.tex/
+.vscode/
+homcont/__pycache__/
+*.pyc
