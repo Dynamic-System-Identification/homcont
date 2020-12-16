@@ -3,8 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 .spyproject/
-.vscode/
 .tex/
+.vscode/
 homcont/__pycache__/
 *.pyc
 
