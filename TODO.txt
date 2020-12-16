@@ -16,6 +16,10 @@ tests
 
 Create test_*.py files for pytest.
 
+test_helpers.py
+test_hompath.py
+test_homsolve.py
+
 
 
 docs
