@@ -1,9 +1,8 @@
-"""Main homsolve function performing numerical path tracing.
+﻿"""Main homsolve function performing numerical path tracing.
 
 
 HomCont:
-Python software for solving systems of nonlinear equations
-by homotopy continuation.
+Solving systems of nonlinear equations by homotopy continuation.
 
 Copyright (C) 2018  Steffen Eibelshäuser & David Poensgen
 
@@ -150,6 +149,9 @@ def homsolve(H: callable, y0: np.ndarray, J: callable = None,
     Q, R = func.qr(J_y=J_y_old)
     sign = func.greedy_sign(y=y_old, Q=Q, R=R, t_target=t_target)
     tangent_old = func.tangent_qr(Q=Q, R=R, sign=sign)
+
+    # check transversality of starting point
+    func.transversality_check(tangent=tangent_old, parameters=parameters)
 
     # initial corrector
     y_corr = y_old.copy()

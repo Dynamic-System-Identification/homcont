@@ -2,8 +2,7 @@
 
 
 HomCont:
-Python software for solving systems of nonlinear equations
-by homotopy continuation.
+Solving systems of nonlinear equations by homotopy continuation.
 
 Copyright (C) 2018  Steffen Eibelshäuser & David Poensgen
 
@@ -118,6 +117,26 @@ def greedy_sign(y, Q, R, t_target):
     return sign
 
 
+# %% check transversality of tangent
+
+
+def transversality_check(tangent, parameters):
+    """Check transversality of given tangent.
+
+    Based on angle between tangent and straight line in t-direction.
+    """
+    dummy_tangent = np.zeros(shape=len(tangent), dtype=np.float64)
+    dummy_tangent[-1] = 1
+
+    scalar_product = min([1, max([-1, np.dot(tangent, dummy_tangent)])])
+    angle = np.arccos(scalar_product) * 180 / np.pi
+    
+    if angle > parameters['transvers_angle_max']:
+        raise ValueError(f'\nTangent has angle {angle: 0.2f}° relative to straight line in t-direction. Starting point is not transversal to x-plane.')
+
+    return
+
+
 # %% bifurcation detection
 
 
@@ -189,7 +208,7 @@ def inflate(ds, parameters, t, t_old, t_target, corr_steps, corr_dist=0):
 def corrector(y_pred, H, J, ds, tangent, parameters):
     """Perform corrector iterations.
 
-    Use Newton-Chord method:
+    Use quasi Newton method:
     Compute Jacobian inverse once at the beginning,
     not anew at each Newton iteration.
 

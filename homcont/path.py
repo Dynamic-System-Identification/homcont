@@ -2,8 +2,7 @@
 
 
 HomCont:
-Python software for solving systems of nonlinear equations
-by homotopy continuation.
+Solving systems of nonlinear equations by homotopy continuation.
 
 Copyright (C) 2018  Steffen Eibelshäuser & David Poensgen
 
