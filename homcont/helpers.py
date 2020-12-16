@@ -189,7 +189,7 @@ def inflate(ds, parameters, t, t_old, t_target, corr_steps, corr_dist=0):
 def corrector(y_pred, H, J, ds, tangent, parameters):
     """Perform corrector iterations.
 
-    Use quasi Newton method:
+    Use Newton-Chord method:
     Compute Jacobian inverse once at the beginning,
     not anew at each Newton iteration.
 
